@@ -9,23 +9,15 @@ latte = MenuItem("latte", 200, 150, 24, 2.5)
 cappuccino = MenuItem("cappuccino", 250, 100, 24, 3.0)
 
 while True:
-    choice = input("What would you like espresso/latte/cappuccino?: ").lower()
+    options = menu.get_items()
+    choice = input(f"What would you like? ({options}): ").lower()
     if choice == "report":
         coffee_maker.report()
         money_machine.report()
+    elif choice == 'exit':
+        print("Exiting...")
+        break
     else:
-        if choice == 'exit':
-            print("Exiting...")
-            break
-        if choice == latte.name and money_machine.make_payment(latte):
-            if money_machine.make_payment(latte.cost):
-                if coffee_maker.is_resource_sufficient(latte):
-                    coffee_maker.make_coffee(latte)
-        elif choice == espresso.name:
-            if money_machine.make_payment(espresso.cost):
-                if coffee_maker.is_resource_sufficient(espresso):
-                    coffee_maker.make_coffee(espresso)
-        elif choice == cappuccino.name:
-            if money_machine.make_payment(cappuccino.cost):
-                if coffee_maker.is_resource_sufficient(cappuccino):
-                    coffee_maker.make_coffee(cappuccino)
+        drink = menu.find_drink(choice)
+        if coffee_maker.is_resource_sufficient(drink) and money_machine.make_payment(drink.cost):
+            coffee_maker.make_coffee(drink)

@@ -1,5 +1,4 @@
 class CoffeeMaker:
-    # Testing Testing
     """Models the machine that makes the coffee"""
     def __init__(self):
         self.resources = {

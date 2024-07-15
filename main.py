@@ -4,9 +4,6 @@ from money_machine import MoneyMachine
 menu = Menu()
 coffee_maker = CoffeeMaker()
 money_machine = MoneyMachine()
-espresso = MenuItem("espresso", 50, 0, 18, 1.5)
-latte = MenuItem("latte", 200, 150, 24, 2.5)
-cappuccino = MenuItem("cappuccino", 250, 100, 24, 3.0)
 
 while True:
     options = menu.get_items()

@@ -14,10 +14,12 @@ while True:
         coffee_maker.report()
         money_machine.report()
     else:
-        money_machine.process_coins()
         if choice == latte.name and money_machine.make_payment(latte):
-            coffee_maker.make_coffee(latte)
+            if money_machine.make_payment(latte.cost):
+                coffee_maker.make_coffee(latte)
         elif choice == espresso.name:
-            coffee_maker.make_coffee(espresso)
+            if money_machine.make_payment(espresso.cost):
+                coffee_maker.make_coffee(espresso)
         elif choice == cappuccino.name:
-            coffee_maker.make_coffee(cappuccino)
+            if money_machine.make_payment(cappuccino.cost):
+                coffee_maker.make_coffee(cappuccino)
